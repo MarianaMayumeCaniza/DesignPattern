@@ -25,6 +25,18 @@ namespace DesignPatternSamples.Infra.Repository.Detran
 
             return result;
         }
+        private readonly ILogger _Logger;
+
+        public IDetranVerificadorDebitosRepository(ILogger<IDetranVerificadorDebitosRepository> logger)
+        {
+            _Logger = logger;
+        }
+
+        public Task<IEnumerable<DebitoVeiculo>> ConsultarDebitos(Veiculo veiculo)
+        {
+            _Logger.LogDebug($"Consultando débitos do veículo placa {veiculo.Placa} para o estado de SP.");
+            return Task.FromResult<IEnumerable<DebitoVeiculo>>(new List<DebitoVeiculo>() { new DebitoVeiculo() });
+        }
 
         
     }
